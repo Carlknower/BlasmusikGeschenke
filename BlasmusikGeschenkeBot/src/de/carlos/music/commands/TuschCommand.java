@@ -72,14 +72,14 @@ public class TuschCommand implements ServerCommand {
 		}
 		
 		if (!memberVoiceState.inVoiceChannel()) {
-			channel.sendMessage("Du musst in einem Sprachkanal sein, um diesen Befehl nutzen zu können.").queue();
+			channel.sendMessage("Du musst in einem Sprachkanal sein, um diesen Befehl nutzen zu kÃ¶nnen.").queue();
 			return;
 		}
 
 		String link = "https://www.youtube.com/watch?v=XwslLBfFvJM";
 		
 		
-System.out.println(channel.getGuild().getMemberById(808389401566117900l).getVoiceState());
+//System.out.println(channel.getGuild().getMemberById(808389401566117900l).getVoiceState());
 		if (channel.getGuild().getMemberById(808389401566117900l).getVoiceState().inVoiceChannel()) {
 			channel.getGuild().mute(channel.getGuild().getMemberById(808389401566117900l), true).queue();
 		}
@@ -118,7 +118,7 @@ System.out.println(channel.getGuild().getMemberById(808389401566117900l).getVoic
 		 * Member me = channel.getGuild().getMemberById(799948476221882380l);
 		 * me.deafen(true).queue();
 		 * 
-		 * try { channel.sendMessage("Tschüss").wait(10000); LeaveCommand leave = new
+		 * try { channel.sendMessage("TschÃ¼ss").wait(10000); LeaveCommand leave = new
 		 * LeaveCommand(); leave.performCommand(p, channel, message, event);
 		 * }catch(Exception e) { e.printStackTrace(); LeaveCommand leave = new
 		 * LeaveCommand(); leave.performCommand(p, channel, message, event); };
