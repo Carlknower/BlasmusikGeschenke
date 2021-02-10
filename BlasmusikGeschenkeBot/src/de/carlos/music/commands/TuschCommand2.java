@@ -64,11 +64,15 @@ public class TuschCommand2 implements ServerCommand {
 		final GuildVoiceState memberVoiceState = p.getVoiceState();
 
 		if (!memberVoiceState.inVoiceChannel()) {
-			channel.sendMessage("Du musst in einem Sprachkanal sein, um diesen Befehl nutzen zu können.").queue();
+			channel.sendMessage("Du musst in einem Sprachkanal sein, um diesen Befehl nutzen zu kÃ¶nnen.").queue();
 			return;
 		}
 
 		String link = "https://www.youtube.com/watch?v=Vv-wq-prqNk";
+		if (channel.getGuild().getMemberById(808389401566117900l).getVoiceState().inVoiceChannel()) {
+			channel.getGuild().mute(channel.getGuild().getMemberById(808389401566117900l), true).queue();
+		}
+		
 
 		PlayerManager.getInstance().loadAndPlay(channel, link);
 
@@ -83,9 +87,19 @@ public class TuschCommand2 implements ServerCommand {
 			if (track == null) {
 				LeaveCommand leaveCmd = new LeaveCommand();
 				leaveCmd.performCommand(p, channel, message, event);
+				// if
+				// (channel.getGuild().getMemberById(808389401566117900l).getVoiceState().inVoiceChannel())
+				// {
+				try {
+					channel.getGuild().mute(channel.getGuild().getMemberById(808389401566117900l), false).queue();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				// }
 				return;
 			}
 		};
+
 
 		executor.schedule(task, 10, TimeUnit.SECONDS); // run task after 10 sec
 		executor.shutdown();
